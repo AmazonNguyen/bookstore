@@ -1,0 +1,97 @@
+.section {
+  margin: 24px auto;
+  padding: 48px;
+  display: block;
+  width: 100%;
+  height: auto;
+  box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2),
+    0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+  background: #ffffff;
+  border-radius: 6px;
+  &:nth-child(1) {
+    .box {
+      .subbox {
+        &:nth-child(1) {
+          .tb-cart {
+            border: 1px solid #009688;
+            width: 60vw;
+            height: auto;
+            thead {
+              tr {
+                border-bottom: 1px solid #009688;
+                th {
+                  padding: 8px 10px;
+                  text-align: center;
+                  color: #009688;
+                  font-weight: normal;
+                }
+              }
+            }
+            tbody {
+              tr {
+                td {
+                  position: relative;
+                  border-bottom: 1px solid #009688;
+                  text-align: center;
+                  padding: 8px;
+                  img {
+                    height: 150px;
+                    width: auto;
+                  }
+                  &:nth-child(4) {
+                    text-align: left;
+                  }
+                  &:not(:last-child) {
+                    &::after {
+                      position: absolute;
+                      content: "";
+                      top: 35%;
+                      right: 0px;
+                      height: 30%;
+                      width: 100%;
+                      z-index: 1;
+                      border-right: 1px solid #009688;
+                    }
+                  }
+                  input {
+                    position: absolute;
+                    z-index: 2;
+                    left: 25%;
+                    top: 42%;
+                    width: 50%;
+                  }
+                  button {
+                    position: absolute;
+                    left: 33%;
+                    top: 42%;
+                    z-index: 2;
+                    background: none;
+                    border: none;
+                    outline: none;
+                    cursor: pointer;
+                    .mat-icon {
+                      color: #009688;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+// template delete
+.mat-dialog-actions {
+  float: right;
+  button {
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    &:nth-child(1){
+      margin-right:24px;
+    }
+  }
+}

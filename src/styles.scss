@@ -1,0 +1,17 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+ul {
+  list-style: none;
+}
+.mat-ink-bar {
+  display: none;
+}
+.ngx-pagination {
+  float: right;
+}
+

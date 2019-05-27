@@ -1,0 +1,174 @@
+<div class="section">
+  <div class="box" fxLayout="row" fxLayoutAlign="end center">
+    <div class="formsearch" fxLayout="row" fxLayoutAlign="space-around center">
+      <input type="text" placeholder="Search...">
+      <mat-icon>search</mat-icon>
+    </div>
+  </div>
+  <div class="box" fxLayout="row">
+    <div class="subbox" fxFlex="18">
+      <h4><span style="margin-right:8px;color:#fff"><i class="fas fa-list-ul"></i></span>Danh mục sách</h4>
+      <ul>
+        <li *ngFor="let item of BookCategoryList; let i = index"
+          (click)="openDialogWithTemplateRef(myDialog, item.id, item.title)">
+          {{item.title}}</li>
+      </ul>
+    </div>
+    <div class="subbox" fxFlex="58">
+      <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="assets/slideshow/image1.jpg" alt="First slide">
+          </div>
+          <div class="carousel-item">
+            <img src="assets/slideshow/image2.jpg" alt="Second slide">
+          </div>
+          <div class="carousel-item">
+            <img src="assets/slideshow/image3.jpg" alt="third slide">
+          </div>
+        </div>
+      </div>
+      <ul>
+        <li>Tuần sách vàng - Nhập mã ngay - rinh luôn quà tặng!</li>
+        <li>Mỗi sản phẩm giảm tới 20% giá trị nhân ngày tri ân khách hàng</li>
+        <li>Đọc sách mỗi ngày - Nâng tầm kiến thức</li>
+      </ul>
+    </div>
+    <div class="subbox" fxFlex="24">
+      <h3>Ngày hội sách</h3>
+      <div class="cardlist">
+        <div class="card" *ngFor="let item of eventBookList">
+          <img class="card-img-top" src="{{item.imagePath}}" alt="Card image">
+          <div class="card-body">
+            <p class="card-title"><a href="#">{{item.title}}</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- DialogWithTemplateRef -->
+<!-- Modal -->
+<ng-template #myDialog>
+  <div *ngIf="isOpen">
+    <h2 matDialogTitle>{{title}}</h2>
+    <mat-dialog-content>
+      <div class="subbox">
+        <div class="itembox">
+          <div class="card" *ngFor="let item of BookCategoryItem">
+            <img class="card-img-top" src="{{item.imagePath}}" alt="Card image cap">
+            <div class="card-body">
+              <div class="icon" fxLayout="row" fxLayoutAlign="space-between center">
+                <ul>
+                  <li><i class="fas fa-heart"></i></li>
+                  <li><a href="/book/cart" style="color: none; outline: none;border:none">
+                      <mat-icon matTooltip="Xem giỏ hàng!" style="color: #009688 ">shopping_cart</mat-icon>
+                    </a></li>
+                </ul>
+                <ul>
+                  <li><button mat-button matDialogClose><a [routerLink]="'/book/detail/' + item.id"><i
+                          class="far fa-eye" matTooltip="Xem chi tiết"></i>
+                      </a></button></li>
+                </ul>
+              </div>
+              <p fxLayout="row" fxLayoutAlign="space-between center"><span>{{item.price}} VNĐ</span>
+                <mat-icon matTooltip="Thêm vào giỏ hàng!">send</mat-icon>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-dialog-content>
+  </div>
+  <mat-dialog-content>
+    <div *ngIf="!isOpen">
+      Danh sách {{title}} đang cập nhật!
+    </div>
+  </mat-dialog-content>
+</ng-template>
+<!-- section2 -->
+<div class="section">
+  <mat-tab-group>
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <span><i class="fas fa-gift"></i></span>
+        Ưu đãi trong ngày
+      </ng-template>
+      <div class="box" fxLayout="row" fxLayoutAlign="space-between center">
+        <div class="card" *ngFor="let item of promoBookList; let i = index">
+          <img class="card-img-top" src="{{item.imagePath}}" alt="Card image cap">
+          <div class="card-body">
+            <!-- content -->
+          </div>
+        </div>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+</div>
+<!-- section 3 -->
+<div class="section">
+  <div class="box">
+    <p>
+      <span><i class="fas fa-book"></i></span>
+      Bạn có thể quan tâm
+    </p>
+    <div class="subbox">
+      <div class="itembox">
+        <div class="card" *ngFor="let item of BookDetailList | paginate: { itemsPerPage: 10, currentPage: p }">
+          <img class="card-img-top" src="{{item.imagePath}}" alt="Card image cap">
+          <div class="card-body">
+            <div class="icon" fxLayout="row" fxLayoutAlign="space-between center">
+              <ul>
+                <li><i class="fas fa-heart"></i></li>
+                <li><a href="/book/cart" style="color: none">
+                    <mat-icon matTooltip="Xem giỏ hàng!" style="color: #009688 ">shopping_cart</mat-icon>
+                  </a></li>
+              </ul>
+              <ul>
+                <li><a [routerLink]="'/book/detail/' + item.id"> <i class="far fa-eye"
+                      matTooltip="Xem chi tiết"></i></a></li>
+              </ul>
+            </div>
+            <p fxLayout="row" fxLayoutAlign="space-between center"><span>{{item.price}} VNĐ</span>
+              <mat-icon matTooltip="Thêm vào giỏ hàng!">send</mat-icon>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- pagination -->
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
+</div>
+<!-- Đăng ký nhận email thông báo -->
+<div class="section">
+  <div class="box" fxLayout="row" fxLayoutAlign="space-between center">
+    <div class="subbox">
+      <p>ĐĂNG KÝ NHẬN EMAIL</p>
+      <p>Đăng ký nhận thông tin sách mới, sách bán</p>
+    </div>
+    <div class="subbox">
+      <mat-form-field>
+        <input matInput placeholder="Tên của bạn">
+      </mat-form-field>
+    </div>
+    <div class="subbox">
+      <mat-form-field>
+        <input matInput placeholder="Email">
+      </mat-form-field>
+    </div>
+    <div class="subbox">
+      <mat-form-field>
+        <mat-label>Thể loại yêu thích</mat-label>
+        <mat-select>
+          <mat-option *ngFor="let item of BookCategoryList" [value]="item.title">
+            {{item.title}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="subbox">
+      <button class="btn btn-primary">Đăng ký ngay!</button>
+    </div>
+  </div>
+</div>

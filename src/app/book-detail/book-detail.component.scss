@@ -1,0 +1,188 @@
+.section {
+  margin: 24px auto;
+  padding: 48px;
+  display: block;
+  width: 100%;
+  height: auto;
+  box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2),
+    0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+  background: #ffffff;
+  border-radius: 6px;
+  .img-thumbnail {
+    width: 18rem;
+  }
+  .box {
+    &:nth-child(2) {
+      .subbox {
+        &:first-child {
+          position: relative;
+          &::after {
+            position: absolute;
+            content: "";
+            height: 100%;
+            width: 100%;
+            top: 0px;
+            right: 0px;
+            bottom: 0px;
+            margin-top: 8px;
+            border-bottom: 1px solid #009688;
+          }
+        }
+        &:nth-child(2) {
+          margin-top: 24px;
+          a {
+            color: #fff;
+            padding: 8px;
+            border-radius: 6px;
+            background: #009688;
+            text-decoration: none;
+            i.fas {
+              margin-right: 5px;
+            }
+            &:hover {
+              border: 1px solid #009688;
+              color: #009688;
+              background: #fff;
+            }
+          }
+        }
+        &:nth-child(3) {
+          margin-top: 24px;
+          p {
+            &:first-child {
+              color: #009688;
+            }
+          }
+          .sub-2 {
+            min-height: 250px;
+            button {
+              background: transparent;
+              border: none;
+              outline: none;
+              span {
+                color: #00bfff;
+              }
+            }
+            .container {
+              line-height: 16px;
+              height: 32px;
+              overflow: hidden;
+            }
+            .show {
+              overflow: visible;
+              height: auto;
+            }
+          }
+        }
+        &:nth-child(4) {
+          span {
+            color: #009688;
+            cursor: pointer;
+            i.fas {
+              margin-right: 8px;
+              &:hover {
+                color: pink;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  &:nth-child(2) {
+    .subbox {
+      display: flex;
+      justify-content: space-around;
+      .itembox {
+        display: grid;
+        grid-template-columns: repeat(4, 15rem);
+        grid-gap: 30px;
+        border-radius: 6px;
+        .card {
+          .card-img-top {
+            height: 260px;
+          }
+          .card-body {
+            padding: 10px 24px;
+            p {
+              text-align: center;
+              border-bottom: 2px solid;
+            }
+            ul {
+              display: flex;
+              li {
+                cursor: pointer;
+                margin-right: 8px;
+                i.fas {
+                  font-size: 20px;
+                  color: #009688;
+                  transition: all 0.3s linear;
+                  -moz-transition: all 0.3s linear;
+                  -webkit-transition: all 0.3s linear;
+                  -o-transition: all 0.3s linear;
+                  &:hover {
+                    transform: scale(1.5, 1.5);
+                    -moz-transform: scale(1.5, 1.5);
+                    -webkit-transform: scale(1.5, 1.5);
+                    -o-transform: scale(1.5, 1.5);
+                    -ms-transform: scale(1.5, 1.5);
+                    color: pink;
+                  }
+                  &:focus {
+                    color: pink;
+                  }
+                  &:active {
+                    color: pink;
+                  }
+                }
+                i.far {
+                  font-size: 20px;
+                }
+                button {
+                  border: none;
+                  background: none;
+                  outline: none;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media all and (max-width: 1069px) {
+  .section {
+    padding: 24px;
+    &:nth-child(1) {
+      .box {
+        margin-top: 24px;
+        &:nth-child(2) {
+          .subbox {
+            &:nth-child(3) {
+              display: flex !important;
+              flex-direction: column !important;
+            }
+          }
+        }
+        &:nth-child(2) {
+          width: 60% !important;
+          margin-left: 24px;
+        }
+      }
+    }
+    &:nth-child(2) {
+      .subbox {
+        display: flex;
+        justify-content: space-around;
+        .itembox {
+          display: grid;
+          grid-template-columns: repeat(3, 15rem);
+          grid-gap: 30px;
+          border-radius: 6px;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,51 @@
+<div class="section" fxLayout="row">
+  <div class="box" fxFlex="30"><img src="{{img}}" alt="" class="img-thumbnail"></div>
+  <div class="box" fxFlex="70">
+    <div class="subbox">
+      <h4>{{name}}</h4>
+      <h5> <span>Giá sản phẩm: </span> {{price}} VNĐ</h5>
+    </div>
+    <div class="subbox"><a href="/book/cart"><span><i class="fas fa-shopping-cart"></i></span>Chọn mua</a></div>
+    <div class="subbox" fxLayout="row">
+      <div class="sub-1" fxFlex="50">
+        <p>Thông tin chi tiết sản phẩm</p>
+        <p>Tác giả: {{author}}</p>
+        <p>Năm xuất bản: {{publish}}</p>
+        <p>Số trang: {{numberofpage}}</p>
+      </div>
+      <div class="sub-2" fxFlex="50">
+        <p>Review sách</p>
+        <div class="container" [class.show]="show">{{review}}</div>
+        <button (click)="show = !show"><span>{{ show ? 'Rút gọn>>': 'Xem thêm...' }}</span></button>
+      </div>
+    </div>
+    <div class="subbox"><span><i class="fas fa-heart"></i>Yêu thích</span></div>
+  </div>
+</div>
+<div class="section">
+  <h4>SẢN PHẨM LIÊN QUAN</h4>
+  <div class="subbox">
+    <div class="itembox">
+      <div class="card" *ngFor="let item of BookList">
+        <img class="card-img-top" src="{{item.imagePath}}" alt="Card image cap">
+        <div class="card-body">
+          <div class="icon" fxLayout="row" fxLayoutAlign="space-between center">
+            <ul>
+              <li><i class="fas fa-heart"></i></li>
+              <li><a href="/book/cart" style="color: none; outline: none;border:none">
+                <mat-icon matTooltip="Xem giỏ hàng!" style="color: #009688 ">shopping_cart</mat-icon>
+              </a></li>
+            </ul>
+            <ul>
+              <li (click)="getId(item.id)"><a [routerLink]="'/book/detail/' + item.id"> <i class="far fa-eye"
+                    matTooltip="Xem chi tiết"></i></a></li>
+            </ul>
+          </div>
+          <p fxLayout="row" fxLayoutAlign="space-between center"><span>{{item.price}} VNĐ</span>
+            <mat-icon matTooltip="Thêm vào giỏ hàng!">send</mat-icon>
+         </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
